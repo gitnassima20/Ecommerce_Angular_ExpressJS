@@ -1,0 +1,63 @@
+
+<div class="row mx-3">
+    <div class="col-md-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a routerLink="/admin">Home</a>
+              </li>
+              <li class="breadcrumb-item active">
+                <a href="javascript:void(0);">Products</a>
+            </ol>
+          </nav>
+    </div>
+    <div class="col-md-6 text-end"><a routerLink="add-product" routerLinkActive="router-link-active"  class="btn btn-primary"><i class="bi bi-plus-circle-fill mx-1"></i>New</a></div>
+  
+</div>
+<fos-server-product-details [product]="selectedProduct" (viewInfo)="setSelectedProduct($event)"></fos-server-product-details>
+<div class="row">
+    <div class="col-md-12 mt-3">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="card card-flush">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Thumbnail</th>
+                                <th>Title</th>
+                                <th>Brand</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-light" *ngFor="let product of products">
+                                <td><img [src]="product.thumbnail" height="80px" width="80px"></td>
+                                <td >{{product.title }}</td>
+                                <td>{{ product.brand }}</td>
+                                <td>{{ product.price | currency:'EUR'}}</td>
+                                <td>{{ product.category?.label}}</td>
+                                <td class="text-center">
+                                    <a class="text-info menu-icon tf-icons" 
+                                       routerLinkActive="router-link-active"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#modalCenter"
+                                       (click)="setSelectedProduct(product);" >
+                                       <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a class="text-warning menu-icon tf-icons" [routerLink]="['/update-product/:product._id']" routerLinkActive="router-link-active" ><i class="bi bi-pencil-square"></i></a>
+                                    <a class="text-danger menu-icon tf-icons" (click)="removeProduct(product._id)"><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                </div>
+            </div>
+
+        </div>  
+    </div>
+</div>
+
+

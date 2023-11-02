@@ -1,0 +1,313 @@
+
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+      <ng-container *ngIf="!(router.url.includes('/signin'))">
+  
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+          <a href="index.html" class="app-brand-link">
+            <span class="app-brand-logo demo">
+              <img src="">
+            </span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">CYBERSWISH</span>
+          </a>
+  
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+          </a>
+        </div>
+  
+        <div class="menu-inner-shadow"></div>
+  
+        <ul class="menu-inner py-1">
+          <!-- Dashboard -->
+          <li class="menu-item"  routerLinkActive="">
+            <a routerLink="/admin" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-clipboard-data-fill"></i>
+              <div>Dashboard</div>
+            </a>
+          </li>
+  
+          <!-- Layouts -->
+          <li class="menu-item" routerLinkActive="active">
+            <a routerLink="/admin/categories" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-tags-fill"></i>
+              <div>Categories</div>
+            </a>
+          </li>
+          <li class="menu-item" routerLinkActive="active">
+            <a routerLink="/admin/products" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-bag-fill"></i>
+              <div>Products</div>
+            </a>
+          </li>
+          <li class="menu-item" routerLinkActive="active">
+            <a routerLink="/admin/orders" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-box2-fill"></i>
+              <div>Orders</div>
+            </a>
+          </li>
+          <li class="menu-item" routerLinkActive="active">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-credit-card-fill"></i>
+              <div>Payements</div>
+            </a>
+          </li>
+          <li class="menu-item" routerLinkActive="active">
+            <a  routerLink="/admin/users" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bi bi-person-fill"></i>
+              <div>Users</div>
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </ng-container>
+      <!-- / Menu -->
+     
+      <!-- Layout container -->
+      <div class="layout-page">
+        <ng-container *ngIf="!(router.url.includes('/signin'))">
+           <!-- Navbar -->
+        <nav
+        class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+        id="layout-navbar"
+      >
+        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+          <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+          </a>
+        </div>
+
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+          <!-- Search -->
+          <div class="navbar-nav align-items-center">
+            <div class="nav-item d-flex align-items-center">
+              <i class="bi bi-search fs-4 lh-0"></i>
+              <input
+                type="text"
+                class="form-control border-0 shadow-none"
+                placeholder="Search..."
+                aria-label="Search..."
+              />
+            </div>
+          </div>
+          <!-- /Search -->
+
+          <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <!-- Place this tag where you want the button to render. -->
+            <li class="nav-item lh-1 me-3">
+              <a
+                class="github-button"
+                href="https://github.com/themeselection/sneat-html-admin-template-free"
+                data-icon="octicon-star"
+                data-size="large"
+                data-show-count="true"
+                aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
+                >Star</a
+              >
+            </li>
+
+            <!-- User -->
+            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+              <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <div class="avatar avatar-online">
+                  <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0 me-3">
+                        <div class="avatar avatar-online">
+                          <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        </div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <span class="fw-semibold d-block">{{ name }}</span>
+                        <small class="text-muted">Admin</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="bx bx-user me-2"></i>
+                    <span class="align-middle">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="bx bx-cog me-2"></i>
+                    <span class="align-middle">Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="d-flex align-items-center align-middle">
+                      <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                      <span class="flex-grow-1 align-middle">Billing</span>
+                      <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" (click)="logout()">
+                    <i class="bx bx-power-off me-2"></i>
+                    <span class="align-middle">Log Out</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!--/ User -->
+          </ul>
+        </div>
+      </nav>
+
+    
+      <!-- / Navbar -->
+        </ng-container>
+  
+       
+      
+        <!-- Content wrapper -->
+        <div class="content my-2">
+          <!-- Content -->
+          <router-outlet></router-outlet>
+          <!-- / Content -->
+  
+        
+  
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+  
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+
+
+
+
+
+
+<!--Other-->
+
+<!--div class="container-fluid">
+  <div class="row flex-nowrap ">
+    <ng-container >
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bgColor ">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 textColor min-vh-100 ">
+          <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto textColor text-decoration-none ">
+            <span class="fs-5 d-none d-sm-inline mt-3">Admin Panel</span>
+          </a>
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 fs-4 align-items-center align-items-sm-start " id="menu">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <a routerLink="/admin" class="nav-link align-middle px-0">
+                <i class="fa fa-tachometer textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor">Dashboard</span>
+              </a>
+            </li>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-product-hunt textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Product </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
+              </a>
+              <div class="collapse " id="collapseLayouts" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="/admin/product"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>Products</a>
+                  <a class="nav-link textColor1" routerLink="admin/product/addproduct"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>addProduct</a>
+                </nav>
+              </div>
+            </li>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-th-large textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Category </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
+              </a>
+              <div class="collapse " id="collapseLayouts3" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="admin/category"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>Categorys</a>
+                  <a class="nav-link textColor1" routerLink="admin/category/addCategory"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>addCategory</a>
+                </nav>
+              </div>
+            </li>
+            <li routerLinkActive="active">
+              <a class="nav-link collapsed align-middle px-0" href="#" data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                <i class="fa fa-cube textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Orders </span>
+                <div class="sb-sidenav-collapse-arrow"></div>
+              </a>
+              <div class="collapse " id="collapseLayouts2" aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion">
+                <nav class="">
+                  <a class="nav-link textColor1" routerLink="/admin/Orders"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>All Orders</a>
+                  <a class="nav-link textColor1" routerLink="/admin/newOrder"><span class="mx-3 me-1"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></span>New Orders</a>
+                </nav>
+              </div>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a routerLink="/admin/users" class="nav-link align-middle px-0">
+                <i class="fa fa-users textColor" aria-hidden="true"></i>
+                <span class="ms-1 d-none d-sm-inline textColor"> Users</span>
+              </a>
+            </li>
+          </ul>
+          <div class="dropdown pb-4">
+            <a
+              href="#"
+              class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+              id="dropdownUser1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://github.com/mdo.png"
+                alt="hugenerd"
+                width="30"
+                height="30"
+                class="rounded-circle"
+              />
+              <span class="d-none  d-sm-inline mx-1" style="font-size:smaller;"></span>
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-dark text-small shadow"
+              aria-labelledby="dropdownUser1"
+            >
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" >Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</!--div-->
+    

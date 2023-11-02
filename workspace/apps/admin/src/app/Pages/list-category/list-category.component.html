@@ -1,0 +1,54 @@
+<div class="row mx-3">
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a routerLink="/admin">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">
+                    <a href="javascript:void(0);">Categories</a>
+                </ol>
+              </nav>
+        </div>
+        <div class="col-md-6 text-end"><a routerLink="add-category" routerLinkActive="router-link-active"  class="btn btn-primary"><i class="bi bi-plus-circle-fill mx-1"></i>New</a></div>
+      
+</div>
+<div class="row">
+    <div class="col-md-12 mt-3">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="card card-flush">
+                <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-hover">
+                            <thead class="table">
+                                <tr>
+                                    <th>Label</th>
+                                    <th>Icon</th>
+                                    <th>Color</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-light" *ngFor="let category of categories">
+                                    <td>{{ category.label }}</td>
+                                    <td ><i [ngClass]="['bi','bi-3x',category.icon]" style="font-size: 24px;"></i></td>
+                                    <td>{{ category.color}}</td>
+                                    <td class="text-center">
+                                        <a class="text-warning menu-icon tf-icons" [routerLink]="['/admin/categories/update-category/',category._id]" routerLinkActive="router-link-active" ><i class="bi bi-pencil-square"></i></a>
+                                        <a class="text-danger menu-icon tf-icons" [routerLink]="['/admin/categories/update-category/', category._id]" (click)="removeCategory(category._id)"><i class="bi bi-trash-fill"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        
+        
+    </div>
+</div>
+

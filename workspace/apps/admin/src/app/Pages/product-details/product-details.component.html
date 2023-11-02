@@ -1,0 +1,57 @@
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-primary" id="modalCenterTitle">Details</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <table>
+              <tr>
+                <th><i class="mx-2 text-primary">Title:</i></th>
+                <td>{{ product?.title}}<td>
+              </tr>
+              <tr>
+                <th><i class="mx-2 text-primary">Brand:</i></th>
+                <td class="mx-5">{{ product?.brand}}</td>
+              </tr>
+              <tr>
+                <th ><i class="mx-2 text-primary">Category:</i></th>
+                <td class="mx-5">{{ product?.category?.label }}</td>
+              </tr>
+              <tr class="mx-2">
+                <th><i class="mx-2 text-primary">Price:</i></th>
+                <td>{{ product?.price | currency:'EUR'}}</td>
+              </tr>
+              <tr class="mx-2">
+                <th><i class="mx-2 text-primary">Description:</i></th>
+                <td>{{ product?.description }}</td>
+              </tr>
+              <tr class="mx-2">
+                <th><i class="mx-2 text-primary">Stock:</i></th>
+                <td>{{ product?.countStock}}</td>
+              </tr>
+              <tr class="mx-2">
+                <th><i class="mx-2 text-primary">Rating:</i></th>
+                <td>{{ product?.rating}} stars</td>
+              </tr>
+              <tr class="mx-2">
+                <th><i class="mx-2 text-primary">Featured:</i></th>
+                <td>{{ product?.isFeatured}}</td>
+              </tr>
+            </table>
+          </div>
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

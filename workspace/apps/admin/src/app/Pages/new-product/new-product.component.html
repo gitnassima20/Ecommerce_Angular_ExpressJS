@@ -1,0 +1,149 @@
+<div class="row mx-3">
+    <div class="col-md-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a routerLink="/admin">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a routerLink="/admin/products">Products</a>
+              </li>
+              <li class="breadcrumb-item active">
+                <a href="javascript:void(0);">Add Product</a>
+            </ol>
+          </nav>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-9 mx-auto" >
+            <form  method="POST" [formGroup]="productForm" (ngSubmit)="saveProduct()" class="w-100" style="max-width: 650px;" enctype="multipart/form-data" >
+                <div >
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-6">
+                            <p class="mb-0">Title</p>
+                            <!-- Material input -->
+                            <div class="input-group mb-3">
+                                <input formControlName="title" type="text" class="form-control"  placeholder="Title" />
+                                <div class="alert alert-danger my-1" *ngIf="productForm.get('title')?.invalid && (productForm.get('title')?.dirty || productForm.get('title')?.touched)">
+                                    <div *ngIf="productForm.get('title')?.errors?.['required']">Required field</div>
+                                    <div *ngIf="productForm.get('title')?.errors?.['minlength']">Min carcters is 5</div>
+                                    <div *ngIf="productForm.get('title')?.errors?.['maxlength']">Max caracters is 40</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+            
+                        <!-- Grid column -->
+                        <div class="col-6">
+                            <p class="mb-0">Brand</p>
+                            <!-- Material input -->
+                            <div class="input-group mb-3">
+                                <input formControlName="brand" type="text" class="form-control"  placeholder="Brand" />
+                                <div class="alert alert-danger my-1" *ngIf="productForm.get('brand')?.invalid && (productForm.get('brand')?.dirty || productForm.get('brand')?.touched)">
+                                    <div *ngIf="productForm.get('brand')?.errors?.['required']">Required field</div>
+                                    <div *ngIf="productForm.get('brand')?.errors?.['minlength']">Min carcters is 4</div>
+                                    <div *ngIf="productForm.get('brand')?.errors?.['maxlength']">Max caracters is 15</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+            
+                    <!-- Grid row -->
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-0">Quantity</p>
+                            <div class="input-group mb-3">
+                                <input formControlName="countStock" type="number" class="form-control" placeholder="Quantity" />
+                                <div class="alert alert-danger my-1" *ngIf="productForm.get('countStock')?.invalid && (productForm.get('countStock')?.dirty || productForm.get('countStock')?.touched)">
+                                    <div *ngIf="productForm.get('countStock')?.errors?.['required']">Required field</div>
+                                    <div *ngIf="productForm.get('countStock')?.errors?.['min']">Invalid quantity</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="mb-0">Price</p>
+                            <div class="input-group mb-3">
+                                <input formControlName="price"  type="number" class="form-control" placeholder="Price" />
+                                <div class="alert alert-danger my-1" *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)">
+                                    <div *ngIf="productForm.get('price')?.errors?.['required']">Required field</div>
+                                    <div *ngIf="productForm.get('price')?.errors?.['pattern']">Invalid quantity</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-0">Thumbnail</p>
+                            <div class="card card-flush">
+                                <div class="card-body text-center pt-0 mt-4 my-2">
+                                    <label for="thumbnail" style="position: relative; display: inline-block;">
+                                        <input type="file"
+                                        formControlName="thumbnail" 
+                                        id="thumbnail"
+                                        name="thumbnail"
+                                        style="position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;"
+                                        (change)="onImageSelected($event)"
+                                        (change)="onSelectFile($event)">
+                                        <img [src]="uploadedImageSrc"  
+                                        height="150px" 
+                                        width="200px" 
+                                        style="border-radius: .475rem; background-repeat: no-repeat; background-size: cover; border: 3px solid rgb(255,255,255); box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, 0.075);">
+                                      </label>
+
+                                    <div class="text-muted mt-5">Set the product thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted</div>
+                                </div>
+                            </div>
+   
+                        </div>
+                        <!-- Grid column -->
+            
+                        <!-- Grid column -->
+                        <div class="col-6">
+                            
+                            <p class="mb-0 ">--Rating--</p>
+                                <div class="input-group mb-3">
+                                    <select formControlName="rating"  class="form-select">
+                                        <option  value="" disabled>--Select a value--</option>
+                                        <ng-container *ngFor="let star of Rating" >
+                                            <option  [value]="star">{{star}} stars</option>
+                                        </ng-container>
+                                    </select>
+                            </div>
+                            <p class="mb-0 ">Category</p>
+                                <div class="input-group mb-3" >
+                                    <select formControlName="category" class="form-select" >
+                                        <option value="" disabled>Select a value</option>
+                                        <ng-container *ngFor="let cat of categories">
+                                            <option  [value]="cat._id">{{ cat.label}}</option>
+                                        </ng-container> 
+                                    </select>
+                            </div>
+                            <p class="mb-0">Description</p>
+                            <div class="input-group mb-4">
+                                <textarea formControlName="description" name="description" rows="3" type="text" class="form-control"  placeholder="Description" ></textarea>
+                            </div>
+                            <p class="mb-0">Featured Product</p>
+                            <div class="form-group mb-4">
+                                <input formControlName="isFeatured" class="form-check-input mx-2" type="radio" name="isFeatured"  value="true" ><label>Yes</label>
+                                <input formControlName="isFeatured" class="form-check-input mx-2" type="radio" name="isFeatured"  value="false">No 
+                            </div>
+                               
+                            
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                    <div class="d-grid my-2">
+                        <button type="submit" routerLink="/admin/products" class="btn btn-primary "><i class="bi bi-send mx-1"></i>Save</button>
+                    </div>
+            </div>
+                
+      
+      
+

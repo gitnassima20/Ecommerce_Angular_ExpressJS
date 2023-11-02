@@ -1,0 +1,49 @@
+<div class="row mx-3">
+    <div class="col-md-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a routerLink="/admin">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a routerLink="/admin/categories">Categories</a>
+              </li>
+              <li class="breadcrumb-item active">
+                <a href="javascript:void(0);">Edit Category</a>
+            </ol>
+          </nav>
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-11 mx-auto" >
+            <form [formGroup]="categoryForm" (submit)="submit(categoryForm)" >
+                <div class="form-group">
+                    <label class="form-control-label" for="label">Label</label>
+                    <input formControlName="label" type="text" class="form-control" id="label" name="label" />
+                    <div class="alert alert-danger my-1" *ngIf="categoryForm.get('label')?.invalid && (categoryForm.get('label')?.dirty || categoryForm.get('label')?.touched)">
+                        <div *ngIf="categoryForm.get('label')?.errors?.['required']">Required field</div>
+                        <div *ngIf="categoryForm.get('label')?.errors?.['minlength']">Min carcters is 3</div>
+                        <div *ngIf="categoryForm.get('label')?.errors?.['maxlength']">Max caracters is 15</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="content">Icon</label>
+                    <input formControlName="icon" type="text" class="form-control" id="icon" name="icon" />
+                    <div class="alert alert-danger my-1" *ngIf="categoryForm.get('icon')?.invalid && (categoryForm.get('icon')?.dirty || categoryForm.get('icon')?.touched)">
+                        <div *ngIf="categoryForm.get('icon')?.errors?.['required']">Required field</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label my-1" for="color">Color</label>
+                    <input formControlName="color" type="color" class="form-control" id="color" name="color" />
+                    <div class="alert alert-danger" *ngIf="categoryForm.get('color')?.invalid && (categoryForm.get('color')?.dirty || categoryForm.get('color')?.touched)">
+                        <div *ngIf="categoryForm.get('color')?.errors?.['required']">Required field</div>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button [disabled]="categoryForm.invalid" routerLink="/admin/categories"  type="submit" class="my-2 btn btn-primary" ><i class="bi bi-send mx-1"></i>Save & Update</button>
+                </div> 
+            </form>
+      </div>
+</div>
+
